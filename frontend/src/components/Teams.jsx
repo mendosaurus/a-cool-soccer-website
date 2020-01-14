@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Teams.css";
 
 export default class Teams extends Component {
   state = {
@@ -53,13 +54,17 @@ export default class Teams extends Component {
     if (this.state.englishPremierLeague !== null) {
       return this.state.englishPremierLeague.map((team, i) => {
         return (
-          <Link to={`/team/${team.idTeam}`}>
-            <div key={i}>
-              <h2>{team.strTeam}</h2>
-              <img src={team.strTeamBadge} alt="{team.strTeam}" />
-              <p>{team.strLeague}</p>
-            </div>
-          </Link>
+          <div key={i} className="team-box">
+            <Link to={`/team/${team.idTeam}`} className="team-link">
+              <h2 className="team-name">{team.strTeam}</h2>
+              <img
+                className="team-badge"
+                src={team.strTeamBadge}
+                alt="{team.strTeam}"
+              />
+              <p className="league-name">{team.strLeague}</p>
+            </Link>
+          </div>
         );
       });
     }
@@ -70,7 +75,7 @@ export default class Teams extends Component {
     return (
       <div>
         <h1>Team select</h1>
-        <ul>{this.displayTeams()}</ul>
+        <div className="teams-container">{this.displayTeams()}</div>
       </div>
     );
   }
