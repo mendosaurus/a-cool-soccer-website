@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./TeamDetail.css";
 
 export default class TeamDetail extends Component {
   state = {
@@ -18,13 +19,13 @@ export default class TeamDetail extends Component {
     });
   }
 
-  displayTeam = () => {
+  displayTeamInfo = () => {
     let team = this.state.theTeam;
     return (
       <div>
-        <div>{team.strTeam}</div>
-        <div>
-          <img src={team.strTeamBadge} alt="" />
+        <div className="team-header">
+          <img src={team.strTeamBadge} alt="" className="team-badge" />
+          <p className="team-name">{team.strTeam}</p>
         </div>
       </div>
     );
@@ -33,7 +34,7 @@ export default class TeamDetail extends Component {
   render() {
     return (
       <div>
-        <div>{this.displayTeam()}</div>
+        <div>{this.displayTeamInfo()}</div>
       </div>
     );
   }

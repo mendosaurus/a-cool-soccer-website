@@ -1,0 +1,13 @@
+.team-badge {
+  width: 200px;
+}
+.team-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+.team-name {
+  font-size: 7rem;
+}
