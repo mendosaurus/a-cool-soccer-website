@@ -10,14 +10,21 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .team-box {
   text-align: center;
   width: 11rem;
   margin: 1rem;
   box-sizing: border-box;
 }
-
 .team-badge {
   width: 80%;
+}
+.search-bar {
+  text-align: center;
+}
+.search-input {
+  width: 80%;
+  height: 80%;
+  font-size: 1.6rem;
+  border-radius: 10px;
 }

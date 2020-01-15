@@ -9,7 +9,10 @@ export default class Teams extends Component {
     germanBundesliga: null,
     italianSerieA: null,
     frenchLigue1: null,
-    spanishLaLiga: null
+    spanishLaLiga: null,
+    searchWords: null,
+    teamsArr: [],
+    searchResults: []
   };
 
   componentDidMount() {
@@ -50,9 +53,64 @@ export default class Teams extends Component {
     });
   }
 
+  copyTeams = () => {
+    if (
+      this.state.englishPremierLeague !== null &&
+      !this.state.teamsArr.includes(this.state.englishPremierLeague)
+    ) {
+      this.state.teamsArr.push(this.state.englishPremierLeague);
+    }
+    if (
+      this.state.germanBundesliga !== null &&
+      !this.state.teamsArr.includes(this.state.germanBundesliga)
+    ) {
+      this.state.teamsArr.push(this.state.germanBundesliga);
+    }
+    if (
+      this.state.italianSerieA !== null &&
+      !this.state.teamsArr.includes(this.state.italianSerieA)
+    ) {
+      this.state.teamsArr.push(this.state.italianSerieA);
+    }
+    if (
+      this.state.frenchLigue1 !== null &&
+      !this.state.teamsArr.includes(this.state.frenchLigue1)
+    ) {
+      this.state.teamsArr.push(this.state.frenchLigue1);
+    }
+    if (
+      this.state.spanishLaLiga !== null &&
+      !this.state.teamsArr.includes(this.state.spanishLaLiga)
+    ) {
+      this.state.teamsArr.push(this.state.spanishLaLiga);
+    }
+  };
+
   displayTeams = () => {
-    if (this.state.englishPremierLeague !== null) {
-      return this.state.englishPremierLeague.map((team, i) => {
+    //  display all of the teams when searchWords is empty
+    if (this.state.searchWords === null) {
+      return this.state.teamsArr.flat(Infinity).map((team, i) => {
+        return (
+          <div key={i} className="team-box">
+            <Link to={`/team/${team.idTeam}`} className="team-link">
+              <h2 className="team-name">{team.strTeam}</h2>
+              <img
+                className="team-badge"
+                src={team.strTeamBadge}
+                alt="{team.strTeam}"
+              />
+              <p className="league-name">{team.strLeague}</p>
+            </Link>
+          </div>
+        );
+      });
+    } else if (
+      this.state.searchWords !== null &&
+      this.state.searchResults.length === 0
+    ) {
+      return <div>There is 0 search reasults.</div>;
+    } else {
+      return this.state.searchResults.map((team, i) => {
         return (
           <div key={i} className="team-box">
             <Link to={`/team/${team.idTeam}`} className="team-link">
@@ -70,11 +128,36 @@ export default class Teams extends Component {
     }
   };
 
+  handleInput = e => {
+    console.log(e, e.target.value);
+    e.preventDefault();
+    this.setState({
+      searchWords: e.target.value
+    });
+    let filterdTeams = this.state.teamsArr.flat(Infinity).filter(team => {
+      console.log(team);
+      return team.strTeam.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    this.setState({
+      searchResults: filterdTeams
+    });
+  };
+
   render() {
     console.log("teams!", this.state);
+    this.copyTeams();
     return (
       <div>
-        <h1>Team select</h1>
+        <h1>Search team</h1>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search by team name (e.g Real Madrid"
+            name="search"
+            className="search-input"
+            onChange={this.handleInput}
+          />
+        </div>
         <div className="teams-container">{this.displayTeams()}</div>
       </div>
     );
