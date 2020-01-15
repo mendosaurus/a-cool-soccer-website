@@ -135,7 +135,7 @@ export default class Teams extends Component {
       searchWords: e.target.value
     });
     let filterdTeams = this.state.teamsArr.flat(Infinity).filter(team => {
-      console.log(team);
+      // console.log(team);
       return team.strTeam.toLowerCase().includes(e.target.value.toLowerCase());
     });
     this.setState({
