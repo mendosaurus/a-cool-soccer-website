@@ -12,9 +12,9 @@
 }
 .team-box {
   text-align: center;
-  width: 11rem;
   margin: 1rem;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 .team-badge {
   width: 80%;
