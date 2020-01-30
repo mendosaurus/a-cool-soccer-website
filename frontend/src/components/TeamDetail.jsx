@@ -27,6 +27,11 @@ export default class TeamDetail extends Component {
           <img src={team.strTeamBadge} alt="" className="team-badge" />
           <p className="team-name">{team.strTeam}</p>
         </div>
+        <div className="stadium-info">
+          <p className="team-name">{team.strStadium}</p>
+          <img src={team.strStadiumThumb} alt="home stadium" />
+          <p>{team.strDescriptionEN}</p>
+        </div>
       </div>
     );
   };
