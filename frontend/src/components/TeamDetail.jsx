@@ -28,17 +28,17 @@ export default class TeamDetail extends Component {
           <img src={team.strTeamBadge} alt="" className="team-badge" />
           <p className="team-name">{team.strTeam}</p>
           <p>{team.strDescriptionEN}</p>
+          <Card style={{ width: "80%" }}>
+            <Card.Img
+              variant="top"
+              src={team.strStadiumThumb}
+              style={{ width: "100%" }}
+            />
+            <Card.Body>
+              <Card.Text>{team.strStadiumDescription}</Card.Text>
+            </Card.Body>
+          </Card>
         </div>
-        <Card style={{ maxWidth: "100%" }}>
-          <Card.Img
-            variant="top"
-            src={team.strStadiumThumb}
-            style={{ width: "100%" }}
-          />
-          <Card.Body>
-            <Card.Text>{team.strStadiumDescription}</Card.Text>
-          </Card.Body>
-        </Card>
       </div>
     );
   };
