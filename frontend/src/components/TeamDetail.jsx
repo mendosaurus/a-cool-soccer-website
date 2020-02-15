@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./TeamDetail.css";
 import Card from "react-bootstrap/Card";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
 
 export default class TeamDetail extends Component {
   state = {
