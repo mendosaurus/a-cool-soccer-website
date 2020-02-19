@@ -39,11 +39,6 @@ export default class TeamDetail extends Component {
             <Card.Text>{team.strStadiumDescription}</Card.Text>
           </Card.Body>
         </Card>
-        {/* <div className="stadium-info">
-          <p className="team-name">{team.strStadium}</p>
-          <img src={team.strStadiumThumb} alt="home stadium" />
-          <p>{team.strStadiumDescription}</p>
-        </div> */}
       </div>
     );
   };
