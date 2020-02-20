@@ -152,7 +152,7 @@ export default class Teams extends Component {
         <div className="search-bar">
           <input
             type="text"
-            placeholder="Search by team name (e.g Real Madrid"
+            placeholder="Search by team name"
             name="search"
             className="search-input"
             onChange={this.handleInput}
