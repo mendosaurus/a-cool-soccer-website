@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./TeamDetail.css";
+import Card from "react-bootstrap/Card";
 
 export default class TeamDetail extends Component {
   state = {
@@ -26,13 +27,23 @@ export default class TeamDetail extends Component {
         <div className="team-header">
           <img src={team.strTeamBadge} alt="" className="team-badge" />
           <p className="team-name">{team.strTeam}</p>
-          <p>{team.strStadiumDescription}</p>
+          <p>{team.strDescriptionEN}</p>
         </div>
-        <div className="stadium-info">
+        <Card style={{ maxWidth: "100%" }}>
+          <Card.Img
+            variant="top"
+            src={team.strStadiumThumb}
+            style={{ width: "100%" }}
+          />
+          <Card.Body>
+            <Card.Text>{team.strStadiumDescription}</Card.Text>
+          </Card.Body>
+        </Card>
+        {/* <div className="stadium-info">
           <p className="team-name">{team.strStadium}</p>
           <img src={team.strStadiumThumb} alt="home stadium" />
           <p>{team.strStadiumDescription}</p>
-        </div>
+        </div> */}
       </div>
     );
   };
