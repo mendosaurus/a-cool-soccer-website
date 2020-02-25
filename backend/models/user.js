@@ -14,6 +14,10 @@ const userSchema = new Schema(
   }
 );
 
+router.get("/users/add", (req, res, next) => {
+  res.render("book-add");
+});
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
